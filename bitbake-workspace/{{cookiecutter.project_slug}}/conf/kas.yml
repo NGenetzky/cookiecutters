@@ -1,0 +1,34 @@
+header:
+  version: 8
+
+distro: nodistro
+target: core-image-base
+
+repos:
+  workspace:
+
+  openembedded-core:
+    url: "http://git.openembedded.org/openembedded-core"
+    refspec: 1351f9be973cfbd043f9b10d218e3cecaa0ab372 # thud
+    layers:
+      meta:
+
+  bitbake:
+    url: "http://git.openembedded.org/bitbake"
+    refspec: 0a3bf681530bd63fc0036ca81ef868ab53fde56c # 1.48
+    layers:
+      .: excluded
+
+bblayers_conf_header:
+  standard: |
+    POKY_BBLAYERS_CONF_VERSION = "2"
+    BBPATH = "${TOPDIR}"
+    BBFILES ?= ""
+
+local_conf_header:
+  standard: |
+    CONF_VERSION = "1"
+    PACKAGE_CLASSES = "package_rpm"
+    SDKMACHINE = "x86_64"
+    USER_CLASSES = "buildstats image-mklibs image-prelink"
+    PATCHRESOLVE = "noop"
