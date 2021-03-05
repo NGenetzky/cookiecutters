@@ -1,0 +1,7 @@
+{
+    "project_name": "workspace",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+    "release_date": "{% now 'local' %}",
+    "version": "0.1.0",
+    "_extensions": ["jinja2_time.TimeExtension"]
+}
