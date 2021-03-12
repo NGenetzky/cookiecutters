@@ -4,3 +4,6 @@
 [submodule "cookiecutter-template"]
 	path = cookiecutter-template
 	url = https://github.com/eviweb/cookiecutter-template.git
+[submodule "cookiecutter-ansible-playbook"]
+	path = cookiecutter-ansible-playbook
+	url = https://github.com/inhumantsar/cookiecutter-ansible-playbook.git
