@@ -1,3 +1,6 @@
 [submodule "ansible-collection"]
 	path = ansible-collection
 	url = git@github.com:mrlesmithjr/cookiecutter-ansible-collection.git
+[submodule "cookiecutter-template"]
+	path = cookiecutter-template
+	url = https://github.com/eviweb/cookiecutter-template.git
