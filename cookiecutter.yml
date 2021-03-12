@@ -1,0 +1,46 @@
+
+default_context:
+
+    ################################################################################
+    # github.com/inhumantsar/cookiecutter-ansible-playbook/
+
+    # Full reference with defaults
+    # https://github.com/inhumantsar/cookiecutter-ansible-playbook/blob/7d459f3f4bb07adb3bd3733ff6c163425874ccaf/cookiecutter.json
+    #   "year": 2019,
+    #   "playbook_name": "dummyplay",
+    #   "author": "J. Doe",
+    #   "author_github": "jdoe",
+    #   "company": "Fake Co.",
+    #   "description": "This playbook does stuff to hosts.",
+    #   "docker_test_image": "inhumantsar/ansible",
+    #   "license": ["BSD", "MIT", "GPLv3", "Proprietary"],
+    #   "vagrant_provider": "virtualbox",
+    #   "vagrant_ram": "1024",
+    #   "vagrant_cpus": "2",
+    #   "vagrant_box": "centos/7",
+    #   "vagrant_play_path": "/tmp/ansible-play"
+
+    year: 2020
+    playbook_name: "ngenetzky-nas"
+    author: "Nathan Genetzky"
+    author_github: "ngenetzky"
+    company: "nathan.genetzky.us"
+    description: "ngenetzky uses ansible-nas"
+
+    ## Match license of ansible-nas
+    license: "MIT"
+
+    ## I prefer libvirt
+    vagrant_provider: "libvirt"
+    vagrant_box: "generic/ubuntu1804"
+
+    ## Reasonable defaults:
+    # vagrant_play_path: "/tmp/ansible-play"
+    # vagrant_ram: "1024"
+    # vagrant_cpus: "2"
+
+    # This docker image seems reasonable.
+    # https://github.com/inhumantsar/docker-ansible
+    # docker_test_image: "inhumantsar/ansible"
+
+    ################################################################################
