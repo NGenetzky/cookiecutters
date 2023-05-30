@@ -6,18 +6,17 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
 fi
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-TEMPLATE='cookiecutter-ansible-playbook'
 readonly \
-    SCRIPT_DIR \
-    TEMPLATE
+    SCRIPT_DIR
 
 main(){
     cd "${SCRIPT_DIR}"
+    TEMPLATE="$1"
 
     cookiecutter --verbose --no-input \
-        --debug-file "debug.log" \
         --config-file "cookiecutter.yml" \
-        --output-dir "templates" \
+        --debug-file "build/debug.log" \
+        --output-dir "build/${TEMPLATE}" \
         "${TEMPLATE}"
 }
 
