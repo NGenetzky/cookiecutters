@@ -7,3 +7,6 @@
 [submodule "cookiecutter-ansible-playbook"]
 	path = cookiecutter-ansible-playbook
 	url = https://github.com/inhumantsar/cookiecutter-ansible-playbook.git
+[submodule "cookiecutter-pytest-plugin"]
+	path = cookiecutter-pytest-plugin
+	url = https://github.com/pytest-dev/cookiecutter-pytest-plugin
