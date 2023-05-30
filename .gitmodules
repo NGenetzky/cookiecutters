@@ -10,3 +10,6 @@
 [submodule "cookiecutter-pytest-plugin"]
 	path = cookiecutter-pytest-plugin
 	url = https://github.com/pytest-dev/cookiecutter-pytest-plugin
+[submodule "cookiecutter-homeassistant-component"]
+	path = cookiecutter-homeassistant-component
+	url = https://github.com/boralyl/cookiecutter-homeassistant-component.git
