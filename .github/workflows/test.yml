@@ -1,0 +1,42 @@
+name: Test
+
+on:
+  pull_request:
+    paths:
+      - 'template/**'
+      - '.github/workflows/test.yml'
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'template/**'
+      - '.github/workflows/test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pytest:
+    name: Pytest cookiecutter template
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.8 for legacy pytest compatibility
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r template/requirements-dev.txt
+
+      - name: Run pytest for template bake tests
+        working-directory: template
+        run: |
+          pytest -q
