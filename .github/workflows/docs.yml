@@ -1,6 +1,7 @@
+---
 name: Docs
 
-on:
+'on':
   pull_request:
     paths:
       - '**/*.md'
