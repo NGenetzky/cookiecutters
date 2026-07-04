@@ -1,0 +1,52 @@
+---
+name: Lint Python
+
+'on':
+  pull_request:
+    paths:
+      - '**/*.py'
+      - '**/requirements-dev.txt'
+      - '.github/scripts/lint-python.sh'
+      - '.github/workflows/lint-python.yml'
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - '**/*.py'
+      - '**/requirements-dev.txt'
+      - '.github/scripts/lint-python.sh'
+      - '.github/workflows/lint-python.yml'
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: >-
+          Space-separated file or directory paths to lint. Leave empty to
+          lint every Python file tracked by git.
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  flake8:
+    name: Flake8
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.8 for legacy flake8 compatibility
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+
+      - name: Install lint dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r template/requirements-dev.txt
+
+      - name: Run lint-python.sh
+        run: .github/scripts/lint-python.sh ${{ inputs.paths }}

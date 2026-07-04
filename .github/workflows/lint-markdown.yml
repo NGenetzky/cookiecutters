@@ -1,0 +1,40 @@
+---
+name: Lint Markdown
+
+'on':
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '.github/scripts/lint-markdown.sh'
+      - '.github/workflows/lint-markdown.yml'
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - '**/*.md'
+      - '.github/scripts/lint-markdown.sh'
+      - '.github/workflows/lint-markdown.yml'
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: >-
+          Space-separated file, directory, or glob paths to lint. Leave
+          empty to lint every Markdown file tracked by git.
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  markdownlint:
+    name: markdownlint-cli2
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run lint-markdown.sh
+        run: .github/scripts/lint-markdown.sh ${{ inputs.paths }}
