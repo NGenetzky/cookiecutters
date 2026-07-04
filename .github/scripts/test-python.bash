@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# test-python.sh - Run pytest across the Python project(s) in this repository.
+# test-python.bash - Run pytest across the Python project(s) in this repository.
 #
 # Usage:
-#   test-python.sh [PYTEST_ARG ...]
+#   test-python.bash [PYTEST_ARG ...]
 #
 # When arguments are given, they are passed straight through to pytest as
 # targets/options, letting callers restrict the run to specific files or
@@ -47,7 +47,7 @@ if [ "$#" -gt 0 ]; then
 fi
 
 if [ "${#project_dirs[@]}" -eq 0 ]; then
-    echo "test-python.sh: no pytest configuration found" >&2
+    echo "test-python.bash: no pytest configuration found" >&2
     exit 0
 fi
 

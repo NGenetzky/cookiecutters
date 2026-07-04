@@ -5,7 +5,7 @@ name: Test Python
   pull_request:
     paths:
       - 'template/**'
-      - '.github/scripts/test-python.sh'
+      - '.github/scripts/test-python.bash'
       - '.github/workflows/test-python.yml'
   push:
     branches:
@@ -13,7 +13,7 @@ name: Test Python
       - master
     paths:
       - 'template/**'
-      - '.github/scripts/test-python.sh'
+      - '.github/scripts/test-python.bash'
       - '.github/workflows/test-python.yml'
   workflow_dispatch:
     inputs:
@@ -41,5 +41,5 @@ jobs:
         with:
           python-version: '3.8'
 
-      - name: Run test-python.sh
-        run: .github/scripts/test-python.sh ${{ inputs.paths }}
+      - name: Run test-python.bash
+        run: .github/scripts/test-python.bash ${{ inputs.paths }}
