@@ -1,0 +1,45 @@
+---
+name: Test Python
+
+'on':
+  pull_request:
+    paths:
+      - 'template/**'
+      - '.github/scripts/test-python.bash'
+      - '.github/workflows/test-python.yml'
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'template/**'
+      - '.github/scripts/test-python.bash'
+      - '.github/workflows/test-python.yml'
+  workflow_dispatch:
+    inputs:
+      paths:
+        description: >-
+          Space-separated pytest targets (files or directories). Leave
+          empty to run pytest for every discovered Python project.
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  pytest:
+    name: Pytest
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.8 for legacy pytest compatibility
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+
+      - name: Run test-python.bash
+        run: .github/scripts/test-python.bash ${{ inputs.paths }}
